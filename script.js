@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const targetDateStr = "2026-04-26T18:30:00+02:00";
+    const targetDateStr = "2026-04-26T18:50:00+02:00";
     const targetTimeValue = new Date(targetDateStr).getTime();
 
     const timerElem = document.getElementById("timer");

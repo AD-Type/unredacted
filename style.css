@@ -12,7 +12,19 @@ body {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     overflow-x: hidden;
-    overflow-y: auto;
+}
+
+/* Red Alert Overlay (for future use or scripts) */
+#red-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 0, 0, 0.4);
+    z-index: 2000; 
+    pointer-events: none;
+    opacity: 0;
 }
 
 .navbar {
@@ -20,11 +32,12 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    background: rgba(0, 0, 0, 0.7); 
+    background: rgba(0, 0, 0, 0.85); 
     border-bottom: 1px solid #111;
-    z-index: 1000; 
-    position: sticky;
+    position: fixed; /* Keeps the navbar pinned on top */
     top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .nav-logo {
@@ -39,43 +52,62 @@ body {
     font-size: 1.1rem;
     letter-spacing: 2px;
     text-transform: uppercase;
+    transition: color 0.3s ease;
 }
 
+.nav-links a:hover {
+    color: #00d4ff; /* Slight glow for links */
+}
+
+/* Animated GIF Background Section */
 .hero {
     position: relative;
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
     width: 100%;
     overflow: hidden;
-    background-color: #000;
+    z-index: -1; /* Pushes the background behind other content */
+    
+    /* Apply the GIF here */
+    background-image: url('unredactedaftemath.gif');
+    
+    /* Position and Scale settings */
+    background-size: cover; /* Video fills the entire space */
+    background-position: center; /* Video remains centered */
+    background-repeat: no-repeat; /* Video does not tile */
+    
+    background-color: #000; /* Fallback color */
 }
 
-#bg-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    object-fit: cover;
-    /* Prevents clicking/pausing */
-    pointer-events: none; 
+/* Red alert style if used later */
+.hero.red-alert {
+    animation: redPulse 4s infinite;
+}
+
+@keyframes redPulse {
+    0% { background-color: rgb(150, 0, 0); }
+    50% { background-color: rgb(80, 0, 0); }
+    100% { background-color: rgb(150, 0, 0); }
 }
 
 .bottom-disclaimer {
     width: 100%;
     text-align: center;
-    padding: 80px 0 50px 0;
+    padding: 40px 0;
     color: rgba(255, 255, 255, 0.2);
     font-size: 0.7rem;
     letter-spacing: 2px;
-    background-color: #000;
+    background: rgba(0, 0, 0, 0.8);
+    position: relative;
 }
 
+/* The secret link "." */
 .footer-secret {
-    color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.05); /* Nearly invisible */
     text-decoration: none;
-    font-size: 0.65rem;
+    font-size: 0.8rem;
+    cursor: default;
+}
+
+.footer-secret:hover {
+    color: rgba(255, 255, 255, 0.2); /* Slightly visible on hover */
 }

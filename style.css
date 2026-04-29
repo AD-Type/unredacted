@@ -15,29 +15,12 @@ body {
     overflow-y: auto;
 }
 
-#red-alert-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(255, 0, 0, 0.4);
-    z-index: 2000; 
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-}
-
-#red-alert-overlay.active {
-    opacity: 1;
-}
-
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    background: #000; 
+    background: rgba(0, 0, 0, 0.7); 
     border-bottom: 1px solid #111;
     z-index: 1000; 
     position: sticky;
@@ -59,36 +42,26 @@ body {
 }
 
 .hero {
-    min-height: 100vh;
+    position: relative;
+    height: 100vh;
     width: 100%;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('backgroundevent.jpg');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
+    background-color: #000;
 }
 
-.hero-content {
-    text-align: center;
-    width: 100%;
-}
-
-.timer-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#status-label {
-    font-size: 2.2rem;
-    letter-spacing: 4px;
-    margin-bottom: 15px;
-}
-
-#timer {
-    font-size: 7rem;
-    line-height: 1;
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    object-fit: cover;
+    /* Prevents clicking/pausing */
+    pointer-events: none; 
 }
 
 .bottom-disclaimer {
@@ -101,14 +74,8 @@ body {
     background-color: #000;
 }
 
-/* Subtle style for the bottom secret link */
 .footer-secret {
     color: rgba(255, 255, 255, 0.15);
     text-decoration: none;
     font-size: 0.65rem;
-    transition: color 0.3s ease;
-}
-
-.footer-secret:hover {
-    color: rgba(255, 0, 0, 0.5); /* Faint red glow on hover */
 }
